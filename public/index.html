@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أوكي ترافيل | لوحة التحكم</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Almarai:wght@300;400;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="login-screen" class="login-overlay">
+        <form id="login-form" class="login-card">
+            <h2>تسجيل دخول المشرف</h2>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="اسم المستخدم" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="كلمة المرور" required>
+            </div>
+            <button type="submit" class="btn-primary">دخول</button>
+            <p id="login-error" class="error-text hidden">بيانات الدخول غير صحيحة</p>
+        </form>
+    </div>
+
+    <div class="container hidden" id="main-app">
+        <header>
+            <div class="header-top">
+                <h1>بوابة أوكي ترافيل</h1>
+                <div class="header-actions">
+                    <button id="settings-btn" class="btn-secondary" title="إعدادات الحساب">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+                        </svg>
+                    </button>
+                    <button id="logout-btn" class="btn-secondary">تسجيل خروج</button>
+                </div>
+            </div>
+            <p>لوحة التحكم بالبيانات</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" id="visa-tab">معلومات التأشيرات</button>
+            <button class="tab-btn" id="general-tab">معلومات عامة</button>
+            <button class="tab-btn" id="users-tab">إدارة المستخدمين</button>
+        </nav>
+
+        <div class="actions">
+            <div class="view-toggle">
+                <button id="card-view-btn" class="view-btn active" title="عرض شبكي">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+                    </svg>
+                </button>
+                <button id="list-view-btn" class="view-btn" title="عرض قائمة">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                    </svg>
+                </button>
+            </div>
+            <div class="main-actions">
+                <button id="bulk-import-btn" class="btn-secondary" title="استيراد جماعي">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                    </svg>
+                    استيراد جماعي
+                </button>
+                <button id="add-btn" class="btn-primary">+ إضافة عنصر جديد</button>
+            </div>
+        </div>
+
+        <main class="content-area">
+            <div id="loading" class="loader">
+                <div class="spinner"></div>
+                <p>جاري جلب البيانات...</p>
+            </div>
+
+            <div id="visa-content" class="tab-content active"></div>
+            <div id="general-content" class="tab-content"></div>
+            <div id="users-content" class="tab-content"></div>
+
+            <div id="error-message" class="error-box hidden">
+                <p>عذراً! حدث خطأ أثناء جلب البيانات.</p>
+                <button onclick="window.location.reload()">إعادة المحاولة</button>
+            </div>
+
+            <div id="pagination" class="pagination"></div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 أوكي ترافيل. جميع الحقوق محفوظة.</p>
+        </footer>
+    </div>
+
+    <!-- Modal for CRUD -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modal-title">تعديل العنصر</h2>
+            <form id="edit-form">
+                <input type="hidden" id="edit-id">
+                <div id="visa-fields">
+                    <div class="input-group">
+                        <label>اسم التأشيرة</label>
+                        <input type="text" id="edit-visa-name">
+                    </div>
+                    <div class="input-group">
+                        <label>نوع التأشيرة</label>
+                        <input type="text" id="edit-visa-type">
+                    </div>
+                    <div class="input-group">
+                        <label>متاحة لـ</label>
+                        <textarea id="edit-eligible-for"></textarea>
+                    </div>
+                </div>
+                <div id="user-fields" class="hidden">
+                    <div class="input-group">
+                        <label>اسم المستخدم</label>
+                        <input type="text" id="edit-user-name">
+                    </div>
+                    <div class="input-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" id="edit-user-pass">
+                    </div>
+                </div>
+                <div id="content-fields">
+                    <div class="input-group">
+                        <label>السؤال</label>
+                        <textarea id="edit-question"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>الإجابة</label>
+                        <textarea id="edit-answer"></textarea>
+                    </div>
+                </div>
+                <div class="modal-btns">
+                    <button type="button" id="cancel-btn" class="btn-secondary">إلغاء</button>
+                    <button type="submit" class="btn-primary">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Password Change -->
+    <div id="pass-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>إعدادات الحساب</h2>
+            <div class="settings-section">
+                <h3>تغيير كلمة المرور</h3>
+                <form id="pass-form">
+                    <div class="input-group">
+                        <label>كلمة المرور الحالية</label>
+                        <input type="password" id="old-pass" required>
+                    </div>
+                    <div class="input-group">
+                        <label>كلمة المرور الجديدة</label>
+                        <input type="password" id="new-pass" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">حفظ كلمة المرور الجديدة</button>
+                </form>
+            </div>
+
+            <div class="settings-section"
+                style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                <h3>أدوات المطور</h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">استخدم التوكن في
+                    Postman (Bearer Token):</p>
+                <button id="copy-token-btn" class="btn-secondary" style="width: 100%;">نسخ JWT Token</button>
+            </div>
+
+            <div class="modal-btns">
+                <button type="button" id="close-pass-btn" class="btn-secondary">إغلاق</button>
+            </div>
+            <p id="pass-msg" class="hidden" style="margin-top: 1rem; text-align: center;"></p>
+        </div>
+    </div>
+
+    <!-- Modal for Bulk Import -->
+    <div id="bulk-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>استيراد جماعي للبيانات</h2>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-secondary);">قم بلصق قائمة البيانات
+                بتنسيق JSON (مصفوفة من الكائنات):</p>
+            <textarea id="bulk-json-input" placeholder='[{"question": "...", "answer": "..."}]'
+                style="width: 100%; height: 200px; font-family: monospace; font-size: 0.85rem; margin-bottom: 1rem;"></textarea>
+            <div class="modal-btns">
+                <button type="button" id="close-bulk-btn" class="btn-secondary">إلغاء</button>
+                <button id="process-bulk-btn" class="btn-primary">بدء الاستيراد</button>
+            </div>
+            <p id="bulk-msg" class="hidden" style="margin-top: 1rem; text-align: center;"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
