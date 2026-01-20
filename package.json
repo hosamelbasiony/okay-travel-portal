@@ -12,11 +12,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "arabic-name-to-en": "^1.0.6",
+    "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
+    "colors": "^1.4.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
+    "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
