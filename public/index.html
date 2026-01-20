@@ -26,76 +26,106 @@
         </form>
     </div>
 
-    <div class="container hidden" id="main-app">
-        <header>
-            <div class="header-top">
-                <h1>بوابة أوكي ترافيل</h1>
-                <div class="header-actions">
-                    <button id="settings-btn" class="btn-secondary" title="إعدادات الحساب">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                            <path
-                                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
-                        </svg>
-                    </button>
-                    <button id="logout-btn" class="btn-secondary">تسجيل خروج</button>
+    <div class="app-layout hidden" id="main-app">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>أوكي ترافيل</h1>
+                <p>بوابة لوحة التحكم</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-item active" id="visa-tab">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 11h20M2 15h20M2 19h20M2 7h20" />
+                    </svg>
+                    معلومات التأشيرات
+                </button>
+                <button class="nav-item" id="general-tab">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" />
+                        <polyline points="13 2 13 9 20 9" />
+                    </svg>
+                    معلومات عامة
+                </button>
+                <button class="nav-item" id="users-tab">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                        <path d="M16 3.13a4 4 0 010 7.75" />
+                    </svg>
+                    إدارة المستخدمين
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="settings-btn" class="nav-item" title="إعدادات الحساب">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+                    </svg>
+                    الإعدادات
+                </button>
+                <button id="logout-btn" class="nav-item logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 01-2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    خروج
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="actions">
+                    <div class="view-toggle">
+                        <button id="card-view-btn" class="view-btn active" title="عرض شبكي">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+                            </svg>
+                        </button>
+                        <button id="list-view-btn" class="view-btn" title="عرض قائمة">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="main-actions">
+                        <button id="bulk-import-btn" class="btn-secondary" title="استيراد جماعي">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                            </svg>
+                            استيراد جماعي
+                        </button>
+                        <button id="add-btn" class="btn-primary">+ إضافة عنصر جديد</button>
+                    </div>
                 </div>
-            </div>
-            <p>لوحة التحكم بالبيانات</p>
-        </header>
+            </header>
 
-        <nav class="tabs">
-            <button class="tab-btn active" id="visa-tab">معلومات التأشيرات</button>
-            <button class="tab-btn" id="general-tab">معلومات عامة</button>
-            <button class="tab-btn" id="users-tab">إدارة المستخدمين</button>
-        </nav>
+            <div class="content-area">
+                <div id="loading" class="loader">
+                    <div class="spinner"></div>
+                    <p>جاري جلب البيانات...</p>
+                </div>
 
-        <div class="actions">
-            <div class="view-toggle">
-                <button id="card-view-btn" class="view-btn active" title="عرض شبكي">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
-                    </svg>
-                </button>
-                <button id="list-view-btn" class="view-btn" title="عرض قائمة">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-                    </svg>
-                </button>
-            </div>
-            <div class="main-actions">
-                <button id="bulk-import-btn" class="btn-secondary" title="استيراد جماعي">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
-                    </svg>
-                    استيراد جماعي
-                </button>
-                <button id="add-btn" class="btn-primary">+ إضافة عنصر جديد</button>
-            </div>
-        </div>
+                <div id="visa-content" class="tab-content active"></div>
+                <div id="general-content" class="tab-content"></div>
+                <div id="users-content" class="tab-content"></div>
 
-        <main class="content-area">
-            <div id="loading" class="loader">
-                <div class="spinner"></div>
-                <p>جاري جلب البيانات...</p>
+                <div id="error-message" class="error-box hidden">
+                    <p>عذراً! حدث خطأ أثناء جلب البيانات.</p>
+                    <button onclick="window.location.reload()">إعادة المحاولة</button>
+                </div>
+
+                <div id="pagination" class="pagination"></div>
             </div>
 
-            <div id="visa-content" class="tab-content active"></div>
-            <div id="general-content" class="tab-content"></div>
-            <div id="users-content" class="tab-content"></div>
-
-            <div id="error-message" class="error-box hidden">
-                <p>عذراً! حدث خطأ أثناء جلب البيانات.</p>
-                <button onclick="window.location.reload()">إعادة المحاولة</button>
-            </div>
-
-            <div id="pagination" class="pagination"></div>
+            <footer>
+                <p>&copy; 2026 أوكي ترافيل. جميع الحقوق محفوظة.</p>
+            </footer>
         </main>
-
-        <footer>
-            <p>&copy; 2026 أوكي ترافيل. جميع الحقوق محفوظة.</p>
-        </footer>
     </div>
 
     <!-- Modal for CRUD -->
